@@ -68,12 +68,12 @@ const GraduationInvitation = ({
 
         <div className="bg-gray-50 text-xs text-gray-500 text-center py-4 border-t border-gray-200">
           <p>Favor de confirmar asistencia antes del {rsvpDate}</p>
-          <p>
+          {/* <p>
             Contacto:{" "}
             <a href={`mailto:${contactEmail}`} className="text-black hover:underline">
               {contactEmail}
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
 
