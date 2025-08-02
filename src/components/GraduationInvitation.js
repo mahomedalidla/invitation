@@ -1,104 +1,194 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import bk from "../bk.jpeg"; // ajusta la ruta según donde esté tu componente
 
-const GraduationInvitation = ({
-  doctorName = "Dra. Karla Ayon",
-  degree = "Doctorado en Ciencias",
-  university = "Instituto Tecnológico de Tepic",
-  date = "19 de Agosto de 2025",
-  time = "11:00 hrs",
-  location = "Auditorio Principal, Edificio de Posgrado",
-  rsvpDate = "1 de Agosto de 2025",
-  contactEmail = "confirmacion@ejemplo.com",
-  message = "Nos complace invitarle a celebrar la culminación de mis estudios de doctorado. Su presencia sería un honor en este día tan significativo.",
-  buttonText = "Ver Ubicación"
-}) => {
+const GraduationInvitation = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4 font-sans">
-      <div className="bg-white shadow-2xl rounded-3xl max-w-md w-full overflow-hidden border border-gray-200">
-        <div className="p-6 sm:p-8 text-center relative">
-          {/* Gorro de graduación SVG */}
-          <div className="w-14 h-14 mx-auto mb-4 text-black">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2zm0 13.09l-8-3.64V11l8 3.64 8-3.64v.45l-8 3.64zM12 22c-2.21 0-4-1.79-4-4h2a2 2 0 004 0h2c0 2.21-1.79 4-4 4z" />
-            </svg>
+    <>
+      {/* Invitación visible solo en móvil */}
+      <div className="invitation-mobile">
+        <div
+          className="min-h-screen flex items-center justify-center p-6"
+          style={{
+            background: "#f0f0f5",
+            fontFamily: `"Century Gothic", "Apple Gothic", Arial, sans-serif`,
+          }}
+        >
+          <div
+            className="relative max-w-md w-full rounded-3xl shadow-xl borderoverflow-hidden"
+            style={{ paddingTop: "40%" }}
+          >
+            {/* Imagen de fondo con preservación de proporción */}
+            <div className="absolute inset-0">
+              <img
+                src={bk}
+                alt="fondo"
+                className="w-full h-full object-contain"
+                style={{
+                  objectFit: "contain",
+                  filter: "brightness(1)",
+                  imageRendering: "auto",
+                }}
+              />
+            </div>
+
+            {/* Contenido encima */}
+            <div className="p-8 text-center relative">
+              <p
+                className="text-sm uppercase tracking-widest mb-2"
+                style={{ letterSpacing: "2px" }}
+              >
+                Acompáñame en esta celebración
+              </p>
+
+              <h1 className="text-sl mb-1" style={{ lineHeight: 1.1 }}>
+                Obtención de Grado <br />{" "}
+                <span style={{ fontSize: "0.8em" }}> (o no)😅</span>
+              </h1>
+
+              <h2
+                className="text-3xl mt-2 mb-4"
+                style={{ fontWeight: 700, letterSpacing: "0.5px" }}
+              >
+                Doctorado <br />
+                Ciencias en Alimentos
+              </h2>
+
+              <div
+                className="text-center mb-6"
+                style={{ fontSize: "1rem", lineHeight: 1.3, color: "#2d2d2d" }}
+              >
+                <p className="mb-1">
+                  <strong style={{ fontWeight: "600" }}>Fecha:</strong> 19 de
+                  Agosto de 2025
+                </p>
+                <p className="mb-1">
+                  <strong style={{ fontWeight: "600" }}>Hora:</strong> 1:00 pm
+                </p>
+                <p className="mb-1">
+                  <strong style={{ fontWeight: "600" }}>Lugar:</strong> Higgs
+                  #36 Col. El paraíso
+                </p>
+              </div>
+
+              <p className="mb-8" style={{ fontSize: "1rem", lineHeight: 1.2 }}>
+                Tu presencia es importante para mí <span>😊</span>
+              </p>
+
+              <div className="flex flex-col sm:flex-row sm:justify-center gap-3">
+                <button
+                  onClick={() => setOpen(true)}
+                  className="px-6 py-2 rounded-full bg-black text-white text-sm font-medium hover:opacity-90 transition"
+                  style={{
+                    fontFamily: `"Century Gothic", "Apple Gothic", Arial, sans-serif`,
+                  }}
+                >
+                  📍 Ver ubicación
+                </button>
+                <a
+                  href="https://wa.link/2m4m2x"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2 rounded-full bg-green-600 text-white text-sm font-medium hover:opacity-90 transition"
+                  style={{
+                    fontFamily: `"Century Gothic", "Apple Gothic", Arial, sans-serif`,
+                  }}
+                >
+                  ✅ Confirmar asistencia
+                </a>
+              </div>
+            </div>
+
+            {/* Modal de ubicación */}
+            {open && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                <div
+                  className="bg-white rounded-2xl shadow-2xl p-6 max-w-sm w-full text-center relative"
+                  style={{
+                    fontFamily: `"Century Gothic", "Apple Gothic", Arial, sans-serif`,
+                  }}
+                >
+                  <h2 className="text-xl font-semibold mb-3">
+                    Ubicación del Evento
+                  </h2>
+                  <p className="text-gray-700 mb-4">
+                    Higgs #36 Col. El paraíso
+                  </p>
+                  <iframe
+                    className="w-full h-48 rounded-lg mb-4"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d927.8169641003867!2d-104.87528923037915!3d21.5363792987652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842737bed467b551%3A0x4817f9585caec903!2sHigos%2036%2C%20El%20Para%C3%ADso%2C%2063038%20Tepic%2C%20Nay.!5e0!3m2!1ses-419!2smx!4v1754102523955!5m2!1ses-419!2smx"
+                    allowFullScreen
+                    loading="lazy"
+                    title="mapa"
+                  />
+                  <div className="flex justify-center gap-6 mb-2">
+                    <button
+                      onClick={() => setOpen(false)}
+                      className="px-5 py-2 bg-black text-white rounded-full hover:opacity-90 transition"
+                    >
+                      Cerrar
+                    </button>
+                    <a
+                      href="https://maps.app.goo.gl/KvGFen4MGurpYhoq6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2 bg-green-600 text-white rounded-full hover:opacity-90 transition flex items-center justify-center"
+                    >
+                      Cómo llegar
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-
-          <p className="text-sm text-gray-600 uppercase tracking-widest">Celebración de Graduación</p>
-
-          {/* Nombre con tipografía elegante */}
-          <h1 className="text-4xl font-dancing text-gray-900 mb-3">{doctorName}</h1>
-
-          <p className="text-lg text-gray-800 mb-6">
-            Ha obtenido el grado de <br />
-            <span className="font-semibold">{degree}</span>
-          </p>
-
-          <div className="space-y-3 text-gray-700 mb-6">
-            <p><strong>Fecha:</strong> {date}</p>
-            <p><strong>Hora:</strong> {time}</p>
-            <p><strong>Lugar:</strong> {location}</p>
-            <p className="italic">{university}</p>
-          </div>
-
-          <p className="text-sm text-gray-600 mb-8 leading-relaxed">{message}</p>
-
-          {/* Botón que abre diálogo */}
-          <div className="flex flex-col sm:flex-row sm:justify-center gap-3 mt-6">
-  {/* Botón para ver ubicación */}
-  <button
-    onClick={() => setOpen(true)}
-    className="flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800 transition"
-  >
-    📍 Ver ubicación
-  </button>
-
-  {/* Botón para confirmar por WhatsApp */}
-  <a
-    href="https://wa.me/5213113001707?text=%C2%A1S%C3%AD%20asistir%C3%A9%20a%20la%20graduaci%C3%B3n%20de%20la%20Dra.%20Karla%20Ayon!"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center justify-center px-5 py-2.5 rounded-full bg-green-600 text-white text-sm font-medium hover:bg-green-700 transition"
-  >
-    ✅ Confirmar asistencia
-  </a>
-</div>
-        </div>
-
-        <div className="bg-gray-50 text-xs text-gray-500 text-center py-4 border-t border-gray-200">
-          <p>Favor de confirmar asistencia antes del {rsvpDate}</p>
-          {/* <p>
-            Contacto:{" "}
-            <a href={`mailto:${contactEmail}`} className="text-black hover:underline">
-              {contactEmail}
-            </a>
-          </p> */}
         </div>
       </div>
 
-      {/* Modal */}
-      {open && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-sm w-full text-center relative">
-            <h2 className="text-xl font-semibold mb-4">Ubicación del Evento</h2>
-            <p className="text-gray-700 mb-4">{location}</p>
-            <iframe
-              className="w-full h-64 rounded-lg mb-4"
-              src="https://www.google.com/maps?q=Instituto+Tecnologico+de+Tepic&output=embed"
-              allowFullScreen
-              loading="lazy"
-            />
-            <button
-              onClick={() => setOpen(false)}
-              className="mt-2 px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition"
-            >
-              Cerrar
-            </button>
+      {/* Mensaje para desktop */}
+      <div className="desktop-message">
+        <div
+          className="min-h-screen flex items-center justify-center p-6 text-center"
+          style={{
+            background: "#f0f0f5",
+            fontFamily: `"Century Gothic", "Apple Gothic", Arial, sans-serif`,
+          }}
+        >
+          <div className="max-w-lg p-8 bg-white rounded-3xl shadow-xl">
+            <h2 className="text-2xl font-semibold mb-4">
+              🎉 Invitación especial 🎉
+            </h2>
+            <p style={{ fontSize: "1.1rem", lineHeight: 1.5, color: "#333" }}>
+              Esta invitación está diseñada para que la disfrutes en tu
+              dispositivo móvil.
+              <br />
+              Por favor, abre este enlace desde tu celular para una mejor
+              experiencia y ver todos los detalles correctamente.
+              <br />
+              ¡Gracias por tu comprensión! 😊
+            </p>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+
+      {/* Estilos CSS para mostrar/ocultar según tamaño de pantalla */}
+      <style jsx>{`
+        .invitation-mobile {
+          display: none;
+        }
+        .desktop-message {
+          display: flex;
+        }
+        @media (max-width: 768px) {
+          .invitation-mobile {
+            display: block;
+          }
+          .desktop-message {
+            display: none;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 
