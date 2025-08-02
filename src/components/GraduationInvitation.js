@@ -67,7 +67,7 @@ const GraduationInvitation = () => {
                   <strong style={{ fontWeight: "600" }}>Hora:</strong> 1:00 pm
                 </p>
                 <p className="mb-1">
-                  <strong style={{ fontWeight: "600" }}>Lugar:</strong> Higgs
+                  <strong style={{ fontWeight: "600" }}>Lugar:</strong> Higos
                   #36 Col. El paraíso
                 </p>
               </div>
@@ -87,7 +87,7 @@ const GraduationInvitation = () => {
                   📍 Ver ubicación
                 </button>
                 <a
-                  href="https://wa.link/2m4m2x"
+                  href="https://wa.link/vropin"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-2 rounded-full bg-green-600 text-white text-sm font-medium hover:opacity-90 transition"
