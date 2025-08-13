@@ -44,7 +44,6 @@ const GraduationInvitation = () => {
 
               <h1 className="text-sl mb-1" style={{ lineHeight: 1.1 }}>
                 Obtención de Grado <br />{" "}
-                <span style={{ fontSize: "0.8em" }}> (o no)😅</span>
               </h1>
 
               <h2
